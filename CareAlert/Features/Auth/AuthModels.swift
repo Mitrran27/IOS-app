@@ -22,3 +22,18 @@ struct WhatsAppRelayRequest: Encodable {
     let phone_num: String
     let title: String
 }
+
+struct OTPVerifyRequest: Encodable {
+    let phone_number: String
+    let otp: String
+    let mobile_token: String
+}
+
+struct OTPVerifyResponse: Decodable {
+    let success: Bool
+    let message: String
+    let token: String
+    let expires_at: String
+    let expires_in_seconds: Int
+    let user: User
+}
