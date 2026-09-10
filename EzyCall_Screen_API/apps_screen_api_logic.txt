@@ -1,0 +1,47 @@
+// LOGIN SCREEN //
+1. Refer login.jpeg for screen design
+2. user will enter phone number in Phone Number text field.
+3. then user will press login button, then need to call login_api. (refer login_api.json)
+4. login api wil provide the otp .
+5. need to send that otp to user whatsapp using ciot whatsapp api.
+
+// OTP VERIFY SCREEN //
+1. Refer otp_verify.jpeg for screen design
+2. user need to enter the otp in otp field
+3. user will press verify and sign in button, then needs to call verify_otp_api.json
+4. after successful login, use the token for all API.
+
+
+// ALARM SCREEN //
+1. Refer alarms.jpeg for screen design
+2. Call get_pending_notifications_api.json 
+3. take the event_name count and list the top 4 in descending order.
+4. in UI have search bar, user can enter any text (ward, bed, hospital, event name), then apps UI will filterout the matching records
+5. event_name in top 
+6. notify_sent is true then needs to display as Notified else not Notified (this one push notification send or not)
+7. then hospital_name , ward_name, bed_name , occurred_at needs to display as per screen.
+8. If user press acknowledge button, then need to open another window that one shows dropdown as assigned_to.
+9. need to list out the nurse_name which is we get from get_pending_notifications_api.
+10. user will select anyone nurce and submit, then need to call acknowledge_api.
+11. currently we dont have a screen for acknowledge.
+
+
+// HISTORY SCREEN //
+1. Refer histoy.jpeg for screen design
+2. Call history_api.json
+3. in UI have search bar, user can enter any text (ward, bed, hospital, event name), then apps UI will filterout the matching records
+4. event_name in top 
+5. If event_status = 1, then needs to display as acknowledged if event_status = 2, then needs to display as Closed.
+6. then hospital_name , ward_name, bed_name , occurred_at needs to display as per screen.
+
+
+// HISTORY DETAIL SCREEN //
+1. Refer history_detail.jpeg for screen design
+2. If user click the event in history, then needs to show the detail screen.
+3, as per screen , needs to show all the information in UI, all we have in history_api.json.
+
+
+// LOGOUT SCREEN //
+1. Refer logout.jpeg for screen.
+2. needs to show the display name and phone number which is we get from verify_otp_api.
+3. If user press the logout button, then need to call logout api and redirect LOGIN screen.

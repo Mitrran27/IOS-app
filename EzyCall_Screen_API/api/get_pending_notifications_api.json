@@ -1,0 +1,35 @@
+{
+    "success": true,
+    "count": 1,
+    "data": [
+        {
+            "id": "7e3d2b4e-5755-48f9-af96-130def630db7",
+            "occurred_at": "2026-08-19T10:15:00.000Z",
+            "ended_at": null,
+            "event_status": 0,
+            "event_type": 2,
+            "ack_by": null,
+            "ack_at": null,
+            "notify_sent": true,
+            "force_close": 0,
+            "hospital_name": "Pantai Hospital Laguna",
+            "ward_name": "WARD 1",
+            "bed_name": "120A",
+            "bed_code": "120A",
+            "event_uuid": "55ad1085-161a-48a9-8fa3-90900cdd3a14",
+            "event_name": "120A-WTR",
+            "color": "#2563EB",
+            "priority": 6,
+            "master_event_type": 2,
+            "nurse_list": [
+                {
+                    "name": "Mani Nurse",
+                    "email": "kr.manikandan22+1@gmail.com",
+                    "user_id": "fa83c7e2-68b0-4f09-856d-e4ccbec56717",
+                    "shift_time": "08:00-16:00",
+                    "phone_number": "917550317806"
+                }
+            ]
+        }
+    ]
+}

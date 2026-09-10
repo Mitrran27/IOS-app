@@ -1,0 +1,435 @@
+{
+  "info": {
+    "_postman_id": "620321d0-eeff-4a05-9c3f-fc702a3af9c9",
+    "name": "Ezycall-Notification API",
+    "description": "Postman collection for Node.js Notification App APIs: login, OTP verify, pending/history notifications, acknowledge, logout.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "3627825"
+  },
+  "item": [
+    {
+      "name": "Health Check",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            ""
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "1. Login - Request OTP",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "let jsonData = pm.response.json();",
+              "if (jsonData.otp) { pm.collectionVariables.set('otp', jsonData.otp); }",
+              "pm.test('Login OTP request successful', function () {",
+              "    pm.expect(jsonData.success).to.eql(true);",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"phone_number\": \"60189732310\"\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/login",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "login"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "2. OTP Verify - Get Token",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "let jsonData = pm.response.json();",
+              "if (jsonData.token) { pm.collectionVariables.set('token', jsonData.token); }",
+              "pm.test('OTP verified and token received', function () {",
+              "    pm.expect(jsonData.success).to.eql(true);",
+              "    pm.expect(jsonData.token).to.exist;",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"phone_number\": \"60189732310\",\n  \"otp\": \"351933\",\n  \"mobile_token\": \"firebase-token1\"\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/otp_verify",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "otp_verify"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "3. Get Pending Notifications",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "let jsonData = pm.response.json();",
+              "pm.test('Pending notifications fetched', function () {",
+              "    pm.expect(jsonData.success).to.eql(true);",
+              "});",
+              "if (jsonData.data && jsonData.data.length > 0) {",
+              "    pm.collectionVariables.set('event_log_id', jsonData.data[0].id);",
+              "}"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          }
+        ],
+        "url": {
+          "raw": "{{base_url}}/get_pending_notifications",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "get_pending_notifications"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "4. Get History Notifications",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          }
+        ],
+        "url": {
+          "raw": "{{base_url}}/get_history_notifications",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "get_history_notifications"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "5. Acknowledge Notification",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"event_log_id\": \"9bb2584b-0f81-445b-a529-9d0d07648f3c\",\n  \"nurse_uuid\": \"3c3878e1-6e4b-4666-ab1e-c273baa05b04\"\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/acknowledge",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "acknowledge"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "9. validate_token",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              ""
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          }
+        ],
+        "url": {
+          "raw": "{{base_url}}/validate_token",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "validate_token"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "9. renew_token",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              ""
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          }
+        ],
+        "url": {
+          "raw": "{{base_url}}/renew_token",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "renew_token"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "9. update_mobile_token",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              ""
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"mobile_token\": \"fURb662KZcpknx8jtxyg2J:APA91bE5l7r17i_ItBGbWtOcYMLMfk-sMqhmdGco6_qv9E1sqOO5NRXlQVTtZxqWSHXF1U3XO474iXXgtmGifhrIuX2VOHbDisauO6OI-p1eBTwlPSYxuWY\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{base_url}}/update_mobile_token",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "update_mobile_token"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "10. Logout",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.collectionVariables.set('token', '');",
+              "pm.test('Logout request completed', function () {",
+              "    pm.expect(pm.response.code).to.be.oneOf([200, 401]);",
+              "});"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          }
+        ],
+        "url": {
+          "raw": "{{base_url}}/logout",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "logout"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "WHATSAPP API ENDPOINT-CIOT",
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"country_code\": \"+60\",\r\n    \"footer\": \"*Reported by Cre8iot System*\",\r\n    \"msg\": \"Report Date : 2023-06-14 09:50:48\\nDB backup completed at : 12:25 PM\\n*Active DB Connections : 30*\\n*Server Memory*\\nTotal : 194 GB\\nUsed : 71 GB\\nFree : 123 GB\\n*Top storage Folders*\\n72G    /\\n41G /root/.pm2/logs\\n41G /root/.pm2\\n*RAM Usage*\\nTotal : 7 GB\\nUsed : 2 GB\\nFree    : 5 GB\",\r\n    \"msg_id\": \"1254\",\r\n    \"notify_type\": \"whatsapp\",\r\n    \"phone_num\": \"+60189732310\",\r\n    \"title\": \"Galuku Production server Status\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "https://notify.ciot.my:5000/",
+          "protocol": "https",
+          "host": [
+            "notify",
+            "ciot",
+            "my"
+          ],
+          "port": "5000",
+          "path": [
+            ""
+          ]
+        }
+      },
+      "response": []
+    }
+  ],
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          ""
+        ]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          ""
+        ]
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://localhost:7000"
+    },
+    {
+      "key": "token",
+      "value": ""
+    },
+    {
+      "key": "email",
+      "value": "admin@example.com"
+    },
+    {
+      "key": "otp",
+      "value": ""
+    },
+    {
+      "key": "event_log_id",
+      "value": ""
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+//Request Body//
+{
+  "phone_number": "60183810223"
+}
+
+//Response Body//
+{
+    "success": true,
+    "message": "OTP sent successfully",
+    "otp": "531513"
+}

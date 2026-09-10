@@ -1,0 +1,23 @@
+// REQUEST BODY //
+{
+  "event_log_id": "9bb2584b-0f81-445b-a529-9d0d07648f3c",
+  "nurse_uuid": "3c3878e1-6e4b-4666-ab1e-c273baa05b04"
+}
+
+//RESPONSE BODY//
+{
+    "success": true,
+    "message": "alarm acknoeledged",
+    "event": {
+        "hospital_uuid": "78b75ae2-2f08-433b-a7cc-7ee3d6e6ec6d",
+        "ward_uuid": "283b1cd0-82b4-42e2-8bc3-c1c322103801"
+    },
+    "nurse": {
+        "id": "3c3878e1-6e4b-4666-ab1e-c273baa05b04",
+        "full_name": "Test Nurse",
+        "hospital_uuid": "7348eb7c-49dc-4a2e-9207-c186b0ef5610",
+        "ward_uuid": "8c37f3f3-95aa-4989-995f-73fd19fc4a8a",
+        "is_active": true,
+        "user_type": "NURSE"
+    }
+}

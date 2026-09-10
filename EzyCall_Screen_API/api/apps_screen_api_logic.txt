@@ -1,0 +1,15 @@
+// LOGIN SCREEN //
+1. Refer login.jpeg for screen design
+2. user will enter phone number in Phone Number text field.
+3. then user will press login button, then need to call login_api. (refer login_api.json)
+4. login api wil provide the otp .
+5. need to send that otp to user whatsapp using ciot whatsapp api.
+
+// OTP VERIFY SCREEN //
+1. Refer otp_verify.jpeg for screen design
+2. user need to enter the otp in otp field
+3. user will press verify and sign in button.
+4. 
+// ALARM SCREEN //
+1. Refer alarms.jpeg for screen design
+2. 

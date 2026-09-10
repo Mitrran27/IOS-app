@@ -1,0 +1,16 @@
+BaseURL
+https://dev-ezycall-dms.ciot.my/notify
+
+
+whatsapp API
+End Point = https://notify.ciot.my:5000/
+Request Body
+{
+    "country_code": "+60",
+    "footer": "*Reported by Ezycall AI System*",
+    "msg": "Your OTP is: 643276\nThis OTP is valid for 5 minutes.\nDo not share this OTP with anyone.\n,
+    "msg_id": "1254",
+    "notify_type": "whatsapp",
+    "phone_num": "+60189732310",
+    "title": "EzyCall Login OTP"
+}

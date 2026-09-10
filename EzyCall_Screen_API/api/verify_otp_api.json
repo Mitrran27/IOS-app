@@ -1,0 +1,29 @@
+// Request Body //
+{
+  "phone_number": "60183810223",
+  "otp": "531513",
+  "mobile_token": "firebase-token1"
+}
+
+// Response Body //
+{
+    "success": true,
+    "message": "Login successful",
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiYzhiOWM0NGQtZmUxMC00ZDZjLTg0ZGItMmY0YjAzNzEyMTlmIiwianRpIjoiMTc4NzAxNjU0NTY4Mi1rdGEyN3JjYzZrIiwiZW1haWwiOiJrci5tYW5pa2FuZGFuMjJAZ21haWwuY29tIiwicGhvbmUiOiI2MDE4MzgxMDIyMyIsImhvc3BpdGFsX3V1aWQiOiI3MzQ4ZWI3Yy00OWRjLTRhMmUtOTIwNy1jMTg2YjBlZjU2MTAiLCJ3YXJkX3V1aWQiOm51bGwsIm5vdGlmeV9hcHBzIjp0cnVlLCJzaGlmdF90aW1lIjoiMDg6MDAtMTY6MDAiLCJwdXNoX25vdGlmeV9lenljYWxsIjpmYWxzZSwicHVzaF9ub3RpZnlfYWR2YW5jZSI6dHJ1ZSwicHVzaF9ub3RpZnlfYXNzZXQiOmZhbHNlLCJpYXQiOjE3ODcwMTY1NDUsImV4cCI6MTc5NDc5MjU0NX0.DlAIfuES5l4h5WUmvpHrOxSaQuTbqmSHk4iyqELc8yQ",
+    "expires_at": "2026-11-16T01:29:05.000Z",
+    "expires_in_seconds": 7776000,
+    "user": {
+        "id": "c8b9c44d-fe10-4d6c-84db-2f4b0371219f",
+        "email": "kr.manikandan22@gmail.com",
+        "full_name": "Mani",
+        "phone": "60183810223",
+        "hospital_uuid": "7348eb7c-49dc-4a2e-9207-c186b0ef5610",
+        "ward_uuid": null,
+        "notify_apps": true,
+        "shift_time": "08:00-16:00",
+        "push_notify_ezycall": false,
+        "push_notify_advance": true,
+        "flag_whatsapp_registration": 0,
+        "push_notify_asset": false
+    }
+}
