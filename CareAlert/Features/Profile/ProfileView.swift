@@ -43,6 +43,14 @@ struct ProfileView: View {
         isLoggingOut = true
         defer { isLoggingOut = false }
 
+        #if DEBUG
+        if DebugMockData.isActive {
+            DebugMockData.isActive = false
+            sessionManager.clearSession()
+            return
+        }
+        #endif
+
         // The backend accepts both 200 and 401 as logout completion, and a
         // network failure shouldn't strand the user in a broken session —
         // the local session is cleared either way.

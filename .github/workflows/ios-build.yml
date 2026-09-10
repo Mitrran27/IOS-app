@@ -23,10 +23,11 @@ jobs:
       - name: Show Xcode version
         run: xcodebuild -version
 
-      - name: Build for iOS Simulator
+      - name: Build for iOS Simulator (Debug)
         run: |
           xcodebuild build \
             -project CareAlert.xcodeproj \
             -scheme CareAlert \
+            -configuration Debug \
             -destination 'generic/platform=iOS Simulator' \
             CODE_SIGNING_ALLOWED=NO

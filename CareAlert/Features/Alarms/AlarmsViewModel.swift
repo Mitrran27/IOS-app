@@ -36,6 +36,13 @@ final class AlarmsViewModel: ObservableObject {
     }
 
     func loadPendingAlarms() async {
+        #if DEBUG
+        if DebugMockData.isActive {
+            events = DebugMockData.pendingEvents
+            return
+        }
+        #endif
+
         isLoading = true
         errorMessage = nil
         defer { isLoading = false }

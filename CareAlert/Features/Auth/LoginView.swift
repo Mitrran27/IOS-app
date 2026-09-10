@@ -57,6 +57,10 @@ struct LoginView: View {
                 .buttonStyle(.borderedProminent)
                 .disabled(!viewModel.isPhoneNumberValid || viewModel.isSubmitting)
 
+                #if DEBUG
+                DebugBypassButton()
+                #endif
+
                 Spacer()
             }
             .padding(24)

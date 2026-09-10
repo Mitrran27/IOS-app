@@ -26,6 +26,9 @@ targets:
         SWIFT_VERSION: "5.0"
         MARKETING_VERSION: "1.0"
         CURRENT_PROJECT_VERSION: "1"
+      configs:
+        Debug:
+          SWIFT_ACTIVE_COMPILATION_CONDITIONS: DEBUG
     dependencies:
       - package: Firebase
         product: FirebaseCore
@@ -38,3 +41,8 @@ schemes:
         CareAlert: all
     run:
       config: Debug
+    # Explicit: App Store / TestFlight archives always use Release, where
+    # SWIFT_ACTIVE_COMPILATION_CONDITIONS does NOT include DEBUG, so every
+    # #if DEBUG block (including the debug login bypass) compiles out.
+    archive:
+      config: Release

@@ -25,6 +25,13 @@ final class HistoryViewModel: ObservableObject {
     }
 
     func loadHistory() async {
+        #if DEBUG
+        if DebugMockData.isActive {
+            events = DebugMockData.historyEvents
+            return
+        }
+        #endif
+
         isLoading = true
         errorMessage = nil
         defer { isLoading = false }
