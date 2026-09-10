@@ -4,7 +4,12 @@ import SwiftUI
 /// goes in the trailing area (an Acknowledge button vs. a status badge).
 struct EventCardView<Trailing: View>: View {
     let event: NotificationEvent
-    @ViewBuilder var trailing: () -> Trailing
+    let trailing: () -> Trailing
+
+    init(event: NotificationEvent, @ViewBuilder trailing: @escaping () -> Trailing) {
+        self.event = event
+        self.trailing = trailing
+    }
 
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
