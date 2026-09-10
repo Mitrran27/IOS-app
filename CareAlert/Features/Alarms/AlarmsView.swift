@@ -50,7 +50,7 @@ struct AlarmsView: View {
                     }
                     .frame(minWidth: 72)
                     .padding()
-                    .background(.background.secondary, in: RoundedRectangle(cornerRadius: 12))
+                    .background(Color.secondary.opacity(0.12), in: RoundedRectangle(cornerRadius: 12))
                 }
             }
             .padding(.horizontal)

@@ -35,7 +35,7 @@ struct EventCardView<Trailing: View>: View {
             trailing()
         }
         .padding()
-        .background(.background.secondary, in: RoundedRectangle(cornerRadius: 12))
+        .background(Color.secondary.opacity(0.12), in: RoundedRectangle(cornerRadius: 12))
     }
 
     private var notifiedBadge: some View {
